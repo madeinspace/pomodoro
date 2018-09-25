@@ -1,25 +1,50 @@
-.clock{
-    display: flex;           /* establish flex container */
-    flex-direction: column;  /* make main axis vertical */
-    justify-content: center; /* center items vertically, in this case */
-    align-items: center;     /* center items horizontally, in this case */
-    height: 300px;
-
-    .circle {
-        border: 6px solid #fff;
-        background-color: transparent;
-        width: 200px;
-        height: 200px;
-        border-radius: 1000px; 
-        margin: 0.5em;
+@import "../../scss/variables";
+.pomodoro{
+    height: 100%;
+    width:100%;
+    background: $defaultBlue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &.running{
+        background: $defaultRed;
+    }
+    
+    &.breaktime{
+        background: $defaultRed;
     }
 
-    .aligner {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        text-align: center;
-      }
-      
+    .clock{
+        display: flex;           /* establish flex container */
+        flex-direction: column;  /* make main axis vertical */
+        justify-content: center; /* center items vertically, in this case */
+        align-items: center;     /* center items horizontally, in this case */
+        height: 300px;
+    
+        .circle {
+            border: 6px solid #fff;
+            background-color: transparent;
+            width: 200px;
+            height: 200px;
+            border-radius: 1000px; 
+            margin: 0.5em;
+        }
+    
+        .aligner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+          }
+          
+    }
+
+    .actions{
+        padding: 12px 25px;
+        border:none;
+        background: #fff;
+        margin-top: 10px;
+    }
 }

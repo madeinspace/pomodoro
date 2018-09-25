@@ -1,15 +1,11 @@
 // :global excludes this selector from being modularised, nice to remember
 :global #app{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 100%;
     font-family: 'Roboto', sans-serif;
     color:#fff;
 }
 
 html, body {
-    background: $defaultBlue;
     width: 100%;
     height: 100%;
     margin: 0;
