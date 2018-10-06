@@ -1,4 +1,4 @@
-# React - ES6 - Webpack - CSS Modules boilerplate
+# A pomodoro app (not finished)
 
 ## Project structure
 
@@ -25,7 +25,7 @@ webpack
 
 1- Clone the app repo
 
-`git clone https://github.com/madeinspace/react-es6-webpack-boilerplate.git`
+`git clone https://github.com/madeinspace/pomodoro`
 
 2- `yarn` or `npm install` to install npm packages
 
