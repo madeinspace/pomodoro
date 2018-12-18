@@ -13,7 +13,7 @@ class Pomodoro extends Component {
       currentTime: 0,
       timerState: timerStates.NOT_SET,
       pomodoroCount: 0,
-      mode: modes.WORK,
+      mode: modes.IDLE,
     };
   }
 
@@ -33,8 +33,9 @@ class Pomodoro extends Component {
   };
 
   handleClick = () => {
-    const { timerState } = this.state; // eslint-disable-line no-shadow
-    timerState === 'NOT_SET' ? this.tick() : this.reset();
+    const { timerState, mode } = this.state; // eslint-disable-line no-shadow
+    this.setState({mode: mode === modes.IDLE ? modes.WORK : modes.IDLE})
+    timerState === timerStates.NOT_SET ? this.tick() : this.reset();
   };
 
   reset = () => {
@@ -42,20 +43,25 @@ class Pomodoro extends Component {
     clearInterval(this.timer);
     this.setState({
       currentTime: workTimeBlock,
-      timerState: timerStates.COMPLETE,
+      timerState: timerStates.NOT_SET,
+      mode: modes.IDLE,
     });
   };
 
   tick = () => {
-    this.setState({ timerState: timerStates.RUNNING });
+    const { mode } = this.state;
+    this.setState({ 
+        timerState: timerStates.RUNNING  
+    });
     this.timer = setInterval(this.countdown, countDownSpeed);
   };
 
   handleTimerComplete = () => {
-    this.reset();
+
     const { pomodoroCount, mode, breakTimeBlock } = this.state;
     const isLongBreak = pomodoroCount % 2 === 1;
     const newState = { ...this.state };
+    clearInterval(this.timer);
 
     if (mode === 'WORK') {
       newState.mode = isLongBreak ? modes.LONG_BREAK : modes.BREAK;
@@ -90,8 +96,11 @@ class Pomodoro extends Component {
         pomodoroCount,
         timerState,
     } = this.state;
+
+    const bgCol = mode === modes.WORK ? style.worktime : style.breaktime;
+
     return (
-      <div className={style.pomodoro}>
+      <div className={(mode !== modes.IDLE ? bgCol : '') + ' ' + style.pomodoro}>
         <h1>{mode}</h1>
         <br />
         <h2>Pomodoro count: {pomodoroCount}</h2>

@@ -2,17 +2,20 @@
 .pomodoro{
     height: 100%;
     width:100%;
-    background: $defaultBlue;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color:$idleStateColor;
+    transition: background-color 1000ms linear;
+
     
-    &.running{
+
+    &.worktime{
         background: $defaultRed;
     }
     
     &.breaktime{
-        background: $defaultRed;
+        background: $defaultBlue;
     }
 
     .clock{

@@ -5,6 +5,7 @@ export const timerStates = {
 };
 
 export const modes = {
+    IDLE: 'IDLE',
     WORK: 'WORK',
     BREAK: 'BREAK',
     LONG_BREAK: 'LONG_BREAK',
@@ -12,7 +13,7 @@ export const modes = {
 };
 
 export const timeBlocks = {
-    LONG_BEAK_TIME: 20,
+    LONG_BEAK_TIME: 10,
     SHORT_BREAK_TIME: 5,
-    WORK_TIME: 20,
+    WORK_TIME: 5,
 };
