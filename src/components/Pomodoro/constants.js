@@ -15,5 +15,5 @@ export const modes = {
 export const timeBlocks = {
     LONG_BEAK_TIME: 10,
     SHORT_BREAK_TIME: 5,
-    WORK_TIME: 5,
+    WORK_TIME: 20,
 };

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import style from './Pomodoro.scss';
 import { timerStates, modes, timeBlocks } from './constants';
 
-const countDownSpeed = 10;
+const countDownSpeed = 1000;
 
 class Pomodoro extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class Pomodoro extends Component {
 
   handleClick = () => {
     const { timerState, mode } = this.state; // eslint-disable-line no-shadow
-    this.setState({mode: mode === modes.IDLE ? modes.WORK : modes.IDLE})
+    this.setState({ mode: mode === modes.IDLE ? modes.WORK : modes.IDLE });
     timerState === timerStates.NOT_SET ? this.tick() : this.reset();
   };
 
@@ -49,15 +49,13 @@ class Pomodoro extends Component {
   };
 
   tick = () => {
-    const { mode } = this.state;
-    this.setState({ 
-        timerState: timerStates.RUNNING  
+    this.setState({
+        timerState: timerStates.RUNNING,
     });
     this.timer = setInterval(this.countdown, countDownSpeed);
   };
 
   handleTimerComplete = () => {
-
     const { pomodoroCount, mode, breakTimeBlock } = this.state;
     const isLongBreak = pomodoroCount % 2 === 1;
     const newState = { ...this.state };
@@ -93,7 +91,6 @@ class Pomodoro extends Component {
     const {
         currentTime,
         mode,
-        pomodoroCount,
         timerState,
     } = this.state;
 
@@ -101,9 +98,7 @@ class Pomodoro extends Component {
 
     return (
       <div className={(mode !== modes.IDLE ? bgCol : '') + ' ' + style.pomodoro}>
-        <h1>{mode}</h1>
-        <br />
-        <h2>Pomodoro count: {pomodoroCount}</h2>
+        <h1>{mode} time</h1>
         <div className={style.clock}>
           <div className={style.circle}>
             <div className={style.aligner}>
